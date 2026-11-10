@@ -1,0 +1,24 @@
+[package]
+name = "nanossh"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+portable-pty = "0.8"
+crossterm = "0.28"
+chacha20poly1305 = "0.10"
+x25519-dalek = { version = "2.0", features = ["static_secrets"] }
+rand = "0.8"
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4", features = ["derive", "env"] }
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+sha2 = "0.10"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
